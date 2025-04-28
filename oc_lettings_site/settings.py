@@ -1,8 +1,10 @@
+import logging
 import os
-
+from dotenv import load_dotenv
 from pathlib import Path
-
 from django.contrib import staticfiles
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -15,9 +17,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # Set to 'False' to check error 404 & 500
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = []  # Allowed_hosts for debug False : '127.0.0.1', 'localhost'
 
 
 # Application definition
@@ -42,6 +44,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'monitoring.monitoring_middleware.ExceptionLoggingMiddleware',
 ]
 
 ROOT_URLCONF = 'oc_lettings_site.urls'
@@ -116,3 +119,22 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static",]
+
+load_dotenv()
+
+print(f"SENTRY_DSN loaded: {os.getenv('SENTRY_DSN')}")
+
+sentry_sdk.init(
+    dsn=os.getenv("SENTRY_DSN"),
+    integrations=[DjangoIntegration()],
+    traces_sample_rate=1.0,
+    send_default_pii=True
+)
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+
+logger = logging.getLogger(__name__)

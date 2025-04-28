@@ -1,6 +1,11 @@
+import logging
+
 from django.shortcuts import get_object_or_404
 from django.shortcuts import render
 from .models import Profile
+
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
@@ -36,6 +41,14 @@ def profile(request, username):
     :return: HttpResponse object rendering the profile view.
     :rtype: HttpResponse
     """
-    profile = get_object_or_404(Profile, user__username=username)
+    logger.info(f"Profile requested for user {username}")
+
+    try:
+        profile = get_object_or_404(Profile, user__username=username)
+        logger.info(f"Profile successfully retrieved for user {username}")
+    except Exception as e:
+        logger.error(f"Error retrieving profile for user {username}: {e}")
+        raise
+
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)
