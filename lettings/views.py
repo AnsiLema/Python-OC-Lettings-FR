@@ -1,6 +1,10 @@
+import logging
 from django.shortcuts import render
 from .models import Letting
 from django.shortcuts import get_object_or_404
+
+
+logger = logging.getLogger(__name__)
 
 def index(request):
     """
@@ -16,6 +20,7 @@ def index(request):
         template with the context containing the list of lettings.
     :rtype: HttpResponse
     """
+    logger.info("Lettings index page requested")  # Log INFO
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
     return render(request, 'lettings/index.html', context)
@@ -36,6 +41,7 @@ def letting(request, letting_id):
     :return: Rendered HTML response displaying the letting details.
     :rtype: HttpResponse
     """
+    logger.info(f"Letting details requested for ID {letting_id}")  # Log INFO
     letting = get_object_or_404(Letting, pk=letting_id)
     context = {
         'title': letting.title,

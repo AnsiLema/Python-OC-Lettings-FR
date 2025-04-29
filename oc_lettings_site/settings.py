@@ -5,10 +5,12 @@ from pathlib import Path
 from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.logging import LoggingIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -17,9 +19,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True  # Set to 'False' to check error 404 & 500
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = []  # Allowed_hosts for debug False : '127.0.0.1', 'localhost'
+
+ALLOWED_HOSTS_STRING = os.getenv('ALLOWED_HOSTS', '127.0.0.1, localhost' if DEBUG else '')
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STRING.split(',') if host.strip()]
+
 
 
 # Application definition
@@ -120,21 +125,26 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static",]
 
-load_dotenv()
+SENTRY_DSN = os.getenv('SENTRY_DSN')
 
-print(f"SENTRY_DSN loaded: {os.getenv('SENTRY_DSN')}")
+if SENTRY_DSN:
+    sentry_logging = LoggingIntegration(
+        level=logging.INFO,
+        # event_level=logging.WARNING,
+        event_level=logging.INFO
+    )
 
-sentry_sdk.init(
-    dsn=os.getenv("SENTRY_DSN"),
-    integrations=[DjangoIntegration()],
-    traces_sample_rate=1.0,
-    send_default_pii=True
-)
+    sentry_sdk.init(
+        dsn=os.getenv("SENTRY_DSN"),
+        integrations=[DjangoIntegration(),
+                      sentry_logging],
+        traces_sample_rate=1.0,
+        send_default_pii=True
+    )
 
 
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s %(levelname)s %(message)s'
-)
+    format='%(asctime)s [%(levelname)s] %(name)s: %(message)s'
 
-logger = logging.getLogger(__name__)
+)

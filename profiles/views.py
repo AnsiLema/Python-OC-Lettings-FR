@@ -20,6 +20,7 @@ def index(request):
     :return: Rendered HTML response for the profiles index page.
     :rtype: HttpResponse
     """
+    logger.info("Profiles index page requested")  # Log INFO
     profiles_list = Profile.objects.all()
     context = {'profiles_list': profiles_list}
     return render(request, 'profiles/index.html', context)
@@ -41,7 +42,7 @@ def profile(request, username):
     :return: HttpResponse object rendering the profile view.
     :rtype: HttpResponse
     """
-    logger.info(f"Profile requested for user {username}")
+    logger.info(f"Profile requested for user {username}")  # Log INFO
 
     try:
         profile = get_object_or_404(Profile, user__username=username)
