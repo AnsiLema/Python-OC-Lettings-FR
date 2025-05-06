@@ -2,6 +2,7 @@ from django.urls import reverse, resolve
 from lettings.views import index as lettings_index_view
 from lettings.views import letting as lettings_detail_view
 
+
 def test_lettings_index_url_resolves():
     """
     Tests that the 'lettings:index' URL resolves to the correct view and view name.
@@ -16,6 +17,7 @@ def test_lettings_index_url_resolves():
     resolver = resolve(url)
     assert resolve(url).func == lettings_index_view
     assert resolver.view_name == 'lettings:index'
+
 
 def test_letting_detail_url_resolves():
     """

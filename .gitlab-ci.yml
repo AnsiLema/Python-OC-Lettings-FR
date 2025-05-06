@@ -1,0 +1,36 @@
+stages:
+  - test
+
+variables:
+  # Avoid pip to ask interactive questions
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  PYTHONUNBUFFERED: "1"
+  COVERAGE_FAIL_UNDER: "80"
+
+default:
+  image: python:3.12
+  before_script:
+    - python -m venv venv
+    - source venv/bin/activate
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - pip install flake8 pytest coverage
+
+flake8:
+  stage: test
+  script:
+    - echo "Lancement du linting avec flake8..."
+    - flake8 .
+  only:
+    - branches
+  tags: []
+
+test:
+  stage: test
+  script:
+    - echo "Lancement des test avec couverture..."
+    - coverage run -m pytest
+    - coverage report --fail-under=$COVERAGE_FAIL_UNDER
+  only:
+    - branches
+  tags: []

@@ -2,7 +2,6 @@ import logging
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from django.contrib import staticfiles
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import LoggingIntegration
@@ -24,7 +23,6 @@ DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS_STRING = os.getenv('ALLOWED_HOSTS', '127.0.0.1, localhost' if DEBUG else '')
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STRING.split(',') if host.strip()]
-
 
 
 # Application definition

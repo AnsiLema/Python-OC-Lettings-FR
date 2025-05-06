@@ -13,6 +13,7 @@ def index(request):
     """
     return render(request, 'index.html')
 
+
 def custom_404(request, exception):
     """
     Custom handler for the HTTP 404 error.
@@ -29,7 +30,8 @@ def custom_404(request, exception):
     :return: A rendered response object with a 404 HTTP status code.
     :rtype: HttpResponse
     """
-    return render(request, '404.html',status=404)
+    return render(request, '404.html', status=404)
+
 
 def custom_500(request):
     """

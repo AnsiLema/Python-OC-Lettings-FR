@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 
 logger = logging.getLogger(__name__)
 
+
 def index(request):
     """
     Handles the retrieval and rendering of the list of lettings.

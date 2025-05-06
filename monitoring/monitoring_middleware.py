@@ -3,6 +3,7 @@ from django.http import Http404
 
 logger = logging.getLogger(__name__)
 
+
 class ExceptionLoggingMiddleware:
     """
     Middleware for logging exceptions and HTTP errors.

@@ -11,6 +11,7 @@ def test_homepage_status_code(client):
     response = client.get(url)
     assert response.status_code == 200
 
+
 @pytest.mark.django_db
 def test_custom_404_view_renders_template():
     factory = RequestFactory()
@@ -19,6 +20,7 @@ def test_custom_404_view_renders_template():
     response = custom_404(request, exception=Exception('Not Found!'))
     assert response.status_code == 404
     assert b"Page" in response.content or b"404" in response.content
+
 
 @pytest.mark.django_db
 def test_custom_500_view_renders_template():

@@ -9,6 +9,7 @@ def test_profiles_index_url_resolves():
     assert resolver.func == profiles_index_view
     assert resolver.view_name == 'profiles:index'
 
+
 def test_profile_detail_url_resolves():
     url = reverse('profiles:profile', args=['testuser'])
     resolver = resolve(url)

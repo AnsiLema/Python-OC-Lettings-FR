@@ -10,7 +10,6 @@ def test_lettings_index_status_code(client):
     assert response.status_code == 200
 
 
-
 @pytest.mark.django_db
 def test_letting_detail_view(client):
     # Créer une adresse fictive
