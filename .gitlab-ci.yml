@@ -1,5 +1,6 @@
 stages:
   - test
+  - build
 
 variables:
   # Avoid pip to ask interactive questions
@@ -36,7 +37,7 @@ test:
   tags: []
 
 docker-build:
-  stage: .pre
+  stage: build
   image: docker:latest
   services:
     - docker:dind
