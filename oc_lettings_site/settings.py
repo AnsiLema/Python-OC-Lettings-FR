@@ -21,7 +21,10 @@ SECRET_KEY = 'fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s'
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 
-ALLOWED_HOSTS_STRING = os.getenv('ALLOWED_HOSTS', '127.0.0.1, localhost' if DEBUG else '')
+ALLOWED_HOSTS_STRING = os.getenv(
+    'ALLOWED_HOSTS',
+    '127.0.0.1, localhost, 0.0.0.0' if DEBUG else '0.0.0.0'
+)
 ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS_STRING.split(',') if host.strip()]
 
 
