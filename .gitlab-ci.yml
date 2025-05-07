@@ -28,7 +28,7 @@ flake8:
 test:
   stage: test
   script:
-    - echo "Lancement des test avec couverture..."
+    - echo "Lancement des test avec coverage..."
     - coverage run -m pytest
     - coverage report --fail-under=$COVERAGE_FAIL_UNDER
   only:
