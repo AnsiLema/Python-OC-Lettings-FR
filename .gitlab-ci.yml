@@ -34,3 +34,20 @@ test:
   only:
     - branches
   tags: []
+
+docker-build:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: ""
+  before_script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  script:
+    - docker build -t $DOCKER_USERNAME/python-oc-lettings-fr:$CI_COMMIT_SHORT_SHA .
+    - docker push $DOCKER_USERNAME/python-oc-lettings-fr:$CI_COMMIT_SHORT_SHA
+  only:
+    - master
+  needs:
+    - test
