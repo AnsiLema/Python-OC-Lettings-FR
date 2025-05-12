@@ -46,7 +46,8 @@ docker-build:
   before_script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   script:
-    - cat templates/index.html | grep "welcome"
+    - find . -name index.html
+    - grep -i "welcome" $(find . -name index.html)
     - docker build --no-cache -t $DOCKER_USERNAME/python-oc-lettings-fr:$CI_COMMIT_SHORT_SHA .
     - docker push $DOCKER_USERNAME/python-oc-lettings-fr:$CI_COMMIT_SHORT_SHA
     - echo "Current directory:" && pwd
