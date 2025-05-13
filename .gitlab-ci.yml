@@ -1,6 +1,7 @@
 stages:
   - test
   - build
+  - deploy
 
 variables:
   # Avoid pip to ask interactive questions
@@ -20,7 +21,7 @@ default:
 flake8:
   stage: test
   script:
-    - echo "Lancement du linting avec flake8..."
+    - echo "Launching linting with flake8..."
     - flake8 . --config=.flake8
   only:
     - branches
@@ -29,7 +30,7 @@ flake8:
 test:
   stage: test
   script:
-    - echo "Lancement des test avec coverage..."
+    - echo "Launch of tests with coverage..."
     - coverage run -m pytest
     - coverage report --fail-under=$COVERAGE_FAIL_UNDER
   only:
@@ -55,4 +56,15 @@ docker-build:
   only:
     - master
   needs:
+    - flake8
     - test
+
+deploy:
+  stage: deploy
+  image: alpine:latest
+  script:
+    - echo "Deployment via Render (triggered automatically after Docker push)"
+  only:
+    - master
+  needs:
+    - docker-build
