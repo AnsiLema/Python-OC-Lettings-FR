@@ -1,5 +1,6 @@
 import logging
 import os
+import sys
 from dotenv import load_dotenv
 from pathlib import Path
 import sentry_sdk
@@ -14,11 +15,16 @@ load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
+IS_COLLECTSTATIC = 'collectstatic' in sys.argv
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 if not SECRET_KEY:
-    raise ValueError("SECRET_KEY missing. Check your environment variables.")
+    if IS_COLLECTSTATIC:
+        SECRET_KEY = 'fake-key-collectstatic-build'
+    else:
+        raise ValueError("SECRET_KEY missing. Check your environment variables.")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True') == 'True'
