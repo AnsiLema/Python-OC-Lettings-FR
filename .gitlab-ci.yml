@@ -62,6 +62,7 @@ docker-build:
 deploy:
   stage: deploy
   image: alpine:latest
+  before_script: []
   script:
     - echo "Deployment via Render (triggered automatically after Docker push)"
   only:
