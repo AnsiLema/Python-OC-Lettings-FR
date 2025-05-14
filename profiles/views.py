@@ -10,14 +10,14 @@ logger = logging.getLogger(__name__)
 
 def index(request):
     """
-    Renders the profiles index page with a list of all profiles.
+    Renders profiles index page with a list of all profiles.
 
     The function retrieves all existing Profile objects and passes them as context
     to the 'profiles/index.html' template.
 
     :param request: Django HTTP request object.
     :type request: HttpRequest
-    :return: Rendered HTML response for the profiles index page.
+    :return: Rendered HTML response for profiles index page.
     :rtype: HttpResponse
     """
     logger.info("Profiles index page requested")  # Log INFO
@@ -28,7 +28,7 @@ def index(request):
 
 def profile(request, username):
     """
-    Retrieves user profile based on the provided username and renders the
+    Retrieves user-profile based on the provided username and renders the
     profile view.
 
     This function fetches the Profile object associated with the specified
