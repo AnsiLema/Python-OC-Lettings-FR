@@ -17,7 +17,7 @@ def test_custom_404_view_renders_template():
     factory = RequestFactory()
     request = factory.get('/wrong-url/')
 
-    response = custom_404(request, exception=Exception('Not Found!'))
+    # response = custom_404(request, exception=Exception('Not Found!'))
     assert response.status_code == 404
     assert b"Page" in response.content or b"404" in response.content
 
