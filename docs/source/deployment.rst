@@ -8,9 +8,9 @@ Environnement cible
 
 L’application est déployée sur :
 
-- **Render.com** (hébergeur PaaS)
+- **Render.com** (hébergeur)
 - Docker Hub (registre d’images Docker)
-- GitLab CI/CD (orchestration du pipeline de déploiement)
+- GitLab CI/CD (gestion du pipeline de déploiement)
 
 Pipeline CI/CD
 --------------
@@ -40,7 +40,7 @@ Fichiers de configuration utilisés :
 - `.gitlab-ci.yml` : pipeline CI/CD
 - `Dockerfile` : construction de l’image
 - `.env` : configuration locale
-- `.readthedocs.yml` : documentation automatisée
+
 
 Commandes utiles (en local)
 ----------------------------

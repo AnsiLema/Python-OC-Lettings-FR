@@ -1,7 +1,7 @@
-Interfaces de programmation (API)
+Interfaces de programmation
 =================================
 
-Le projet **Python-OC-Lettings-FR** ne fournit pas d'API REST ou GraphQL. Il repose sur des vues Django classiques (views basées sur des fonctions) et une structure en URLs bien définie.
+Le projet **Python-OC-Lettings-FR** repose sur des vues Django classiques (views basées sur des fonctions) et une structure en URLs bien définie.
 
 Organisation
 ------------
