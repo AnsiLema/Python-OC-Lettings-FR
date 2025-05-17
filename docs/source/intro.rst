@@ -14,4 +14,4 @@ Le projet met en oeuvre des bonnes pratiques de développement professionnel tel
 - La conteneurisation Docker
 - Le déploiement continu avec GitLab CI/CD et Render
 
-Cette documentation fournit des informations nécessaires à la compréhension, l'installation, le deploiement et la maintenance de l'application.
+Cette documentation fournit des informations nécessaires à la compréhension, l'installation, le déploiement et la maintenance de l'application.
