@@ -1,7 +1,7 @@
 Guide d'utilisation
 ===================
 
-Cette section fournit des exemples concrets d’utilisation de l’application **Python OC Lettings FR**, que ce soit en tant qu'utilisateur ou développeur.
+Cette section fournit des exemples d’utilisation de l’application **Python OC Lettings FR**, que ce soit en tant qu'utilisateur ou développeur.
 
 Accès au site
 -------------
