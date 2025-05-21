@@ -52,11 +52,19 @@ Cas d’usage typique
 Un utilisateur visite le site et consulte une location disponible :
 
 - Il clique sur « Lettings »
-.. image:: _static/lettingsbuttonpress.webp
+.. image:: docs/source/_static/lettingsbuttonpress.webp
    :alt: Page d’accueil de l’application
-   :width: 600px
+   :width: 300px
    :align: center
 - Il accède à la fiche de la location
+.. image:: docs/source/_static/Lettingdetail.webp
+   :alt: Page d’accueil de l’application
+   :width: 300px
+   :align: center
 - Il retourne à l’accueil pour explorer les profils d’autres utilisateurs
+.. image:: docs/source/_static/HomebuttonAction.webp
+   :alt: Page d’accueil de l’application
+   :width: 300px
+   :align: center
 
 ---
