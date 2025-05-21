@@ -17,7 +17,7 @@ def index(request):
 
     :param request: Django HTTP request object.
     :type request: HttpRequest
-    :return: Rendered HTML response for profiles index page.
+    :return: Rendered HTML response for the profile index page.
     :rtype: HttpResponse
     """
     logger.info("Profiles index page requested")  # Log INFO
