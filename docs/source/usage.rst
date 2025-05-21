@@ -52,6 +52,10 @@ Cas d’usage typique
 Un utilisateur visite le site et consulte une location disponible :
 
 - Il clique sur « Lettings »
+.. image:: _static/screenshot 2025-05-21  14.13.26.png
+   :alt: Page d’accueil de l’application
+   :width: 600px
+   :align: center
 - Il accède à la fiche de la location
 - Il retourne à l’accueil pour explorer les profils d’autres utilisateurs
 
