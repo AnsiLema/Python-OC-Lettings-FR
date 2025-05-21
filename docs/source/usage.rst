@@ -54,13 +54,13 @@ Un utilisateur visite le site et consulte une location disponible :
 - Il clique sur « Lettings »
 .. image:: _static/lettingsbuttonpress.webp
    :alt: Page d’accueil de l’application
-   :width: 300px
+   :width: 400px
    :align: center
 - Il accède à la fiche de la location
 - Il retourne à l’accueil pour explorer les profils d’autres utilisateurs
 .. image:: _static/homebuttonaction.webp
    :alt: Retour à la page d'accueil
-   :width: 300px
+   :width: 400px
    :align: center
 
 ---
