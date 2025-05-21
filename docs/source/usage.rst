@@ -58,12 +58,12 @@ Un utilisateur visite le site et consulte une location disponible :
    :align: center
 - Il accède à la fiche de la location
 .. image:: _static/lettingdetail.webp
-   :alt: Page d’accueil de l’application
+   :alt: Page détail d'une location
    :width: 300px
    :align: center
 - Il retourne à l’accueil pour explorer les profils d’autres utilisateurs
 .. image:: _static/homebuttonaction.webp
-   :alt: Page d’accueil de l’application
+   :alt: Retour à la page d'accueil
    :width: 300px
    :align: center
 
