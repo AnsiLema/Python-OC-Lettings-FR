@@ -14,6 +14,4 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-ARG PORT=8000
-ENV PORT=${PORT}
-CMD ["sh", "-c", "gunicorn app.wsgi:application --bind 0.0.0.0:$PORT"]
+CMD ["gunicorn", "app.wsgi:application", "--bind", "0.0.0.0:8000"]
