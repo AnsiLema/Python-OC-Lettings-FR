@@ -52,7 +52,7 @@ Cas d’usage typique
 Un utilisateur visite le site et consulte une location disponible :
 
 - Il clique sur « Lettings »
-.. image:: _static/screenshot 2025-05-21  14.13.26.png
+.. image:: _static/lettingsbuttonpress.webp
    :alt: Page d’accueil de l’application
    :width: 600px
    :align: center
