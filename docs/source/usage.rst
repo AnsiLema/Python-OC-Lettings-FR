@@ -57,7 +57,7 @@ Un utilisateur visite le site et consulte une location disponible :
    :width: 300px
    :align: center
 - Il accède à la fiche de la location
-.. image:: _static/Lettingdetail.webp
+.. image:: _static/lettingdetail.webp
    :alt: Page d’accueil de l’application
    :width: 300px
    :align: center
