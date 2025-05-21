@@ -62,7 +62,7 @@ Un utilisateur visite le site et consulte une location disponible :
    :width: 300px
    :align: center
 - Il retourne à l’accueil pour explorer les profils d’autres utilisateurs
-.. image:: docs/source/_static/HomebuttonAction.webp
+.. image:: docs/source/_static/homebuttonaction.webp
    :alt: Page d’accueil de l’application
    :width: 300px
    :align: center
