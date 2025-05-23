@@ -15,7 +15,7 @@ def test_letting_detail_view(client):
     # Créer une adresse fictive
     address = Address.objects.create(
         number=123,
-        street='Rue Test',
+       # street='Rue Test',
         city='Villetest',
         state='DP',
         zip_code=75000,
