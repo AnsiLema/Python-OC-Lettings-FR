@@ -16,7 +16,7 @@ def test_letting_detail_view(client):
     address = Address.objects.create(
         number=123,
         street='Rue Test',
-       # city='Villetest',
+        city='Villetest',
         state='DP',
         zip_code=75000,
         country_iso_code='FR'
